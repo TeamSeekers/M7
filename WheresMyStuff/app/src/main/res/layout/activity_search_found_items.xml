@@ -28,7 +28,7 @@
         android:text="Enter Color of Found Item"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="17dp"
         app:layout_constraintTop_toBottomOf="@+id/enterFoundNameSearch"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/enterFoundNameSearch" />
@@ -72,7 +72,7 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/enterFoundDescriptionSearch"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="62dp"
         app:layout_constraintTop_toBottomOf="@+id/enterFoundNameSearch"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/enterFoundDescriptionSearch" />
@@ -95,25 +95,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:layout_marginEnd="43dp"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/enterFoundDescriptionSearch"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/enterFoundDescriptionSearch" />
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/searchBackButtonFound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:layout_marginEnd="19dp"
-        tools:layout_constraintTop_creator="1"
+        android:layout_marginEnd="16dp"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="59dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/addressSearchLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Address of Found Item"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="21dp"
         app:layout_constraintTop_toBottomOf="@+id/enterFoundDescriptionSearch"
-        android:layout_marginBottom="63dp" />
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/enterFoundDescriptionSearch" />
+
+    <EditText
+        android:id="@+id/searchEnterAddressFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Street Address"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/addressSearchLabel"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/addressSearchLabel" />
 </android.support.constraint.ConstraintLayout>

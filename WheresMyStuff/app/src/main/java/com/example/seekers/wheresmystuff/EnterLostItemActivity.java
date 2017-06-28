@@ -11,6 +11,7 @@ public class EnterLostItemActivity extends AppCompatActivity {
     private EditText enterNameOfItem;
     private EditText enterColorOfItem;
     private EditText enterDescriptionOfItem;
+    private EditText enterAddressOfItem;
     private Button cancelEnter;
     private Button enterFoundItem;
 
@@ -23,6 +24,7 @@ public class EnterLostItemActivity extends AppCompatActivity {
         enterDescriptionOfItem = (EditText) findViewById(R.id.enterLostItemDescription);
         cancelEnter = (Button) findViewById(R.id.cancelEnterItem);
         enterFoundItem = (Button) findViewById(R.id.enterLostItemButton);
+        enterAddressOfItem = (EditText) findViewById(R.id.enterAddressOfItemLost);
 
         cancelEnter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +39,8 @@ public class EnterLostItemActivity extends AppCompatActivity {
                 String name = enterNameOfItem.getText().toString();
                 String color = enterColorOfItem.getText().toString();
                 String description = enterDescriptionOfItem.getText().toString();
-                LostItem newLostItem = new LostItem(name, color, description);
+                String address = enterAddressOfItem.getText().toString();
+                LostItem newLostItem = new LostItem(name, color, description, address);
                 WelcomeScreenActivity.lostItemList.getLostItemList().add(newLostItem);
                 WelcomeScreenActivity.myRef.child("LostItems").child(name + " : " + description).setValue(newLostItem);
                 finish();

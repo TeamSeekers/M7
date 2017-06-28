@@ -1,15 +1,24 @@
 package com.example.seekers.wheresmystuff;
 
+import android.location.Address;
+import android.location.Geocoder;
+import android.provider.Telephony;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -39,12 +48,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        try {
+            addAllMarkers();
+        } catch (IOException io) {
+            Log.d("Exception", io.getMessage());
+        }
+        CameraPosition pos = new CameraPosition(new LatLng(30.00, -93), 0, 0, 0);
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(pos));
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
+    }
+
+    public void addMarker(Item item) throws IOException {
+        Geocoder coder = new Geocoder(this);
+        ArrayList<Address> newAddress = (ArrayList<Address>) coder.getFromLocationName(item.getAddress(), 3);
+        for (Address add : newAddress) {
+            double longitude = add.getLongitude();
+            double latitude = add.getLatitude();
+            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(item.toString()));
+        }
+    }
+
+    public void addAllMarkers() throws IOException {
+        for (int i = 0; i < WelcomeScreenActivity.lostItemList.getLostItemList().size(); i++) {
+            if (WelcomeScreenActivity.lostItemList.getLostItemList().get(i).getAddress() != null) {
+                addMarker(WelcomeScreenActivity.lostItemList.getLostItemList().get(i));
+            }
+        }
     }
 }

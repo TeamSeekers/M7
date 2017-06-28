@@ -16,6 +16,7 @@ public class SearchFoundItemsActivity extends AppCompatActivity {
     private EditText name;
     private EditText color;
     private EditText description;
+    private EditText address;
     public static ArrayList<FoundItem> foundSearch;
 
     @Override
@@ -28,6 +29,7 @@ public class SearchFoundItemsActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.enterFoundNameSearch);
         color = (EditText) findViewById(R.id.enterFoundColorSearch);
         description = (EditText) findViewById(R.id.enterFoundDescriptionSearch);
+        address = (EditText) findViewById(R.id.searchEnterAddressFound);
         foundSearch = new ArrayList<FoundItem>();
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +45,7 @@ public class SearchFoundItemsActivity extends AppCompatActivity {
                 String itemName = name.getText().toString();
                 String itemColor = color.getText().toString();
                 String itemDescription = description.getText().toString();
+                String itemAddress = address.getText().toString();
                 ArrayList<FoundItem> temp = WelcomeScreenActivity.foundItemList.getFoundItemList();
                 for (int i = 0; i < temp.size(); i++) {
                     if (itemName.equals(temp.get(i).getName())) {
@@ -56,6 +59,11 @@ public class SearchFoundItemsActivity extends AppCompatActivity {
                         }
                     }
                     if (itemDescription.equals(temp.get(i).getDescription())) {
+                        if (!foundSearch.contains(temp.get(i))) {
+                            foundSearch.add(temp.get(i));
+                        }
+                    }
+                    if (itemAddress.equals(temp.get(i).getAddress())) {
                         if (!foundSearch.contains(temp.get(i))) {
                             foundSearch.add(temp.get(i));
                         }

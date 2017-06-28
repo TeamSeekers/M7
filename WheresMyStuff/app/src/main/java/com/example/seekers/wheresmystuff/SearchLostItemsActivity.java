@@ -16,6 +16,7 @@ public class SearchLostItemsActivity extends AppCompatActivity {
     private EditText name;
     private EditText color;
     private EditText description;
+    private EditText address;
     public static ArrayList<LostItem> lostSearch;
 
     @Override
@@ -28,6 +29,7 @@ public class SearchLostItemsActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.enterNameSearch);
         color = (EditText) findViewById(R.id.enterColorSearch);
         description = (EditText) findViewById(R.id.enterDescriptionSearch);
+        address = (EditText) findViewById(R.id.searchEnterAddressLost);
         lostSearch = new ArrayList<LostItem>();
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +45,7 @@ public class SearchLostItemsActivity extends AppCompatActivity {
                 String itemName = name.getText().toString();
                 String itemColor = color.getText().toString();
                 String itemDescription = description.getText().toString();
+                String itemAddress = address.getText().toString();
                 ArrayList<LostItem> temp = WelcomeScreenActivity.lostItemList.getLostItemList();
                 for (int i = 0; i < temp.size(); i++) {
                     if (itemName.equals(temp.get(i).getName())) {
@@ -56,6 +59,11 @@ public class SearchLostItemsActivity extends AppCompatActivity {
                         }
                     }
                     if (itemDescription.equals(temp.get(i).getDescription())) {
+                        if (!lostSearch.contains(temp.get(i))) {
+                            lostSearch.add(temp.get(i));
+                        }
+                    }
+                    if (itemAddress.equals(temp.get(i).getAddress())) {
                         if (!lostSearch.contains(temp.get(i))) {
                             lostSearch.add(temp.get(i));
                         }

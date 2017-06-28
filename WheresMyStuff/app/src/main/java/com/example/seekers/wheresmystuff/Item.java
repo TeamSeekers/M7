@@ -9,4 +9,5 @@ public abstract class Item {
     public abstract String getColor();
     public abstract String getDescription();
     public abstract String toString();
+    public abstract String getAddress();
 }
