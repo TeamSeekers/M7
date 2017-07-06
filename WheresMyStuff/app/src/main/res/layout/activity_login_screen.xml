@@ -38,7 +38,7 @@
         android:ems="10"
         android:layout_marginTop="26dp"
         android:id="@+id/password"
-        android:text="Enter Password"
+        android:hint="Enter Password"
         android:layout_below="@+id/passwordLabel"
         android:layout_alignStart="@+id/passwordLabel" />
 
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Enter Username"
+        android:hint="Enter Username"
         android:ems="10"
         android:layout_marginTop="21dp"
         android:id="@+id/username"

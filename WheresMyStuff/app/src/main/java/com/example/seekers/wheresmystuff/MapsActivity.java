@@ -62,19 +62,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void addMarker(Item item) throws IOException {
         Geocoder coder = new Geocoder(this);
-        ArrayList<Address> newAddress = (ArrayList<Address>) coder.getFromLocationName(item.getAddress(), 3);
+        ArrayList<Address> newAddress = (ArrayList<Address>) coder.getFromLocationName(item.getAddress(), 10);
         for (Address add : newAddress) {
             double longitude = add.getLongitude();
             double latitude = add.getLatitude();
-            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title(item.toString()));
+            mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .title(item.getName())
+                    .snippet(item.getAddress() + "/" + item.getColor() + "/" + item.getDescription()));
         }
     }
 
     public void addAllMarkers() throws IOException {
         for (int i = 0; i < WelcomeScreenActivity.lostItemList.getLostItemList().size(); i++) {
-            if (WelcomeScreenActivity.lostItemList.getLostItemList().get(i).getAddress() != null) {
                 addMarker(WelcomeScreenActivity.lostItemList.getLostItemList().get(i));
-            }
+        }
+        for (int i = 0; i < WelcomeScreenActivity.foundItemList.getFoundItemList().size(); i++) {
+                addMarker(WelcomeScreenActivity.foundItemList.getFoundItemList().get(i));
         }
     }
 }

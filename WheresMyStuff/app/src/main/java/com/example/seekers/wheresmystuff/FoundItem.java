@@ -38,7 +38,6 @@ public class FoundItem extends Item {
     }
 
     public String toString() {
-        return "Name: " + this.name + " Color: " + this.color + " Description: " + this.description
-                + " Address: " + address;
+        return this.name + "/" + this.color + "/" + this.description + "/" + address;
     }
 }
