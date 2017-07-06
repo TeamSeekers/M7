@@ -9,6 +9,9 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+/**
+ * A controller class to search through a list of lost items.
+ */
 public class SearchLostItemsActivity extends AppCompatActivity {
 
     private Button search;

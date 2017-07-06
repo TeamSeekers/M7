@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ * A controller class that handles when the app is initiated.
+ */
 public class WelcomeScreenActivity extends AppCompatActivity {
 
     private Button login;

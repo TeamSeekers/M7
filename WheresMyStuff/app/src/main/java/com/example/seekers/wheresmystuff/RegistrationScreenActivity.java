@@ -22,6 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.EventListener;
 
+/**
+ * This class represents the controller for the Registration Screen
+ * to handle the scenarios for a successful and unsuccessful registration.
+ *
+ */
 public class RegistrationScreenActivity extends AppCompatActivity {
 
     private EditText enterName;
