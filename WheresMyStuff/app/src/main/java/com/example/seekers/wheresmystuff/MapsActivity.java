@@ -75,10 +75,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void addAllMarkers() throws IOException {
         for (int i = 0; i < WelcomeScreenActivity.lostItemList.getLostItemList().size(); i++) {
+            if (WelcomeScreenActivity.lostItemList.getLostItemList().get(i).getAddress() != null) {
                 addMarker(WelcomeScreenActivity.lostItemList.getLostItemList().get(i));
+            }
         }
         for (int i = 0; i < WelcomeScreenActivity.foundItemList.getFoundItemList().size(); i++) {
+            if (WelcomeScreenActivity.foundItemList.getFoundItemList().get(i).getAddress() != null) {
                 addMarker(WelcomeScreenActivity.foundItemList.getFoundItemList().get(i));
+            }
         }
     }
 }
